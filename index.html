@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html>
+
+    <head>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Grossi Manuel" />
+        <meta name="description" content="Vespa traffic race" />
+
+        <script type="text/javascript" src="lib/three.min.js"></script>
+        <script type="text/javascript" src="lib/stats.min.js"></script>
+        <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
+        <script type="text/javascript" src="src/game.js"></script>
+        <script type="text/javascript" src="src/utils.js"></script>
+        <script type="text/javascript" src="src/OrbitControls.js"></script>
+        <script type="text/javascript" src="src/world.js"></script>
+        <script type="text/javascript" src="src/animation.js"></script>
+        <script type="text/javascript" src="src/hero.js"></script>
+        <script type="text/javascript" src="src/obstacles.js"></script>
+        <link rel="stylesheet" href="lib/style.css">
+        
+        <title>Vespa traffic race</title>
+    </head>
+
+    <body>
+        <div class="game"></div>
+        <div class="score_container">
+            <div class="score">
+                <h1 class="value"></h1>
+            </div>
+        </div>
+
+        <input class="start" type="image" src="./assets/menu/start.png" alt="Start">
+        <div class="gameOver">
+            <div class="final_score">
+                <h1 style="font-size: 3em; margin:5px">Game Over</h1>
+                <h1 style="font-size: 2.5em; margin:5px">Your Score</h1>
+                <h1 id="final_score_value"/ style="font-size: 3em; margin-bottom:40px"></h1>
+                <a class="playAgain">Play again!</a>
+            </div>
+        </div>
+    </body>
+
+</html>
