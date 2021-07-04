@@ -39,15 +39,24 @@ function createEnvironment(){
 
 function addWorld(){
 	var planeGeometry = new THREE.PlaneGeometry(10000,40);
-	var texture = textureLoader.load('./assets/scene/road.png', function(texture) {
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        texture.offset.set(0, 0);
-        texture.repeat.set(1500, 3);
+    
+	var textureasphalt = textureLoader.load('./assets/scene/asphalt.png', function(textureasphalt) {
+        textureasphalt.wrapS = textureasphalt.wrapT = THREE.RepeatWrapping;
+        textureasphalt.offset.set(0, 0);
+        textureasphalt.repeat.set(1500, 1500);
     });
 
-	var planeMaterial = new THREE.MeshBasicMaterial( { map:texture} )
+	var textureroad = textureLoader.load('./assets/scene/road.png', function(textureroad) {
+        textureroad.wrapS = textureroad.wrapT = THREE.RepeatWrapping;
+        textureroad.offset.set(0, 0);
+        textureroad.repeat.set(1500, 3);
+    });
+
+	var planeMaterial = new THREE.MeshBasicMaterial( { map:textureasphalt} )
+	var roadMaterial = new THREE.MeshBasicMaterial( { map:textureroad} )
 
 	scrollingPlane = new THREE.Mesh( planeGeometry, planeMaterial );
+	scrollingPlane = new THREE.Mesh( planeGeometry, roadMaterial );
 	scrollingPlane.receiveShadow = true;
 	scrollingPlane.castShadow=false;
 	//rollingGroundSphere.position.z=1;

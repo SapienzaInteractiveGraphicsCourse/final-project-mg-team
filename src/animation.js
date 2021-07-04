@@ -23,13 +23,6 @@ function handleKeyDown(keyEvent){
 		next_next_move.push({name: 'biker.position.x', value: currentLane})
 		position_buffer = position_buffer.concat([next_move, next_next_move])
 
-	} else if (keyEvent.keyCode === 38) {
-
-		next_move = fill_pose(dcopy(jump));
-		next_next_move = fill_pose(dcopy(normal));
-		next_move.push({name: 'biker.position.x', value: currentLane})
-		next_next_move.push({name: 'biker.position.x', value: currentLane})
-		position_buffer = position_buffer.concat([next_move, next_next_move])
 	}
 }
 
