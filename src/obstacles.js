@@ -58,6 +58,7 @@ function createCar(){
 		rotation = Math.PI 
 		clone.scale.set(1, 1, 1);
 		clone.rotation.y = rotation;
+		clone.position.y=0.3;
 		return clone
 	};
 }

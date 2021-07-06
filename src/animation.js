@@ -90,7 +90,7 @@ function set_pose(pose){
 }
 
 const normal = 	[
-	 {name: 'biker.position.y', value: 0.1},
+	 {name: 'biker.position.y', value: 0.2},
 	 {name: 'biker.rotation.z', value: 0}
  ]
 
@@ -99,12 +99,12 @@ const jump = [
 ]
 
 const shift_right = [
-	{name: 'biker.position.y', value: 0.1},
+	{name: 'biker.position.y', value: 0.2},
 	{name: 'biker.rotation.z', value: 1}
 ]
 
 const shift_left = [
-	{name: 'biker.position.y', value: 0.1},
+	{name: 'biker.position.y', value: 0.2},
 	{name: 'biker.rotation.z', value: -1}
 ]
 

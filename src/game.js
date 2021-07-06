@@ -94,9 +94,11 @@ function update(){
 			speedCounter = 0;
 		}
 		scrollingPlane.position.z += scrollingSpeed;
+		scrollingPlane1.position.z += scrollingSpeed;
         moveBuildings(scrollingSpeed);
 		moveObstacles(scrollingSpeed);
 		scrollingPlane.rotation.x=-Math.PI/2;
+		scrollingPlane1.rotation.x=-Math.PI/2;
 		nextIntStep();
 		obstacleCounter += 1;
 		speedCounter += 1;

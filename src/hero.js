@@ -1,4 +1,4 @@
-var heroBaseY=0.1;
+var heroBaseY=0.2;
 var hero
 var poses = {};
 var strikes = 0;
@@ -60,7 +60,7 @@ function getHero(path, tree, parent) {
 var body = 	{
 		value: 'biker',
 		settings: [
-		  {name: 'position.y', value: 0.1},
+		  {name: 'position.y', value: 0.2},
 		  {name: 'position.z', value: 3},
 		  {name: 'rotation.x', value: Math.PI/10},
 		  {name: 'rotation.y', value: -Math.PI},

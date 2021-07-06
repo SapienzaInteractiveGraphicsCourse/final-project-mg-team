@@ -2,6 +2,7 @@ var gravity=0.005;
 var worldRadius=26;
 var scrollingSpeed=0.10;
 var scrollingPlane;
+var scrollingPlane1;
 
 function createPathStrings(folder) {
   const basePath = `./assets/scene/${folder}/`;
@@ -38,7 +39,8 @@ function createEnvironment(){
 }
 
 function addWorld(){
-	var planeGeometry = new THREE.PlaneGeometry(10000,40);
+	var planeGeometryAsphalt = new THREE.PlaneGeometry(10000,40);
+	var planeGeometryRoad = new THREE.PlaneGeometry(10000,12);
     
 	var textureasphalt = textureLoader.load('./assets/scene/asphalt.png', function(textureasphalt) {
         textureasphalt.wrapS = textureasphalt.wrapT = THREE.RepeatWrapping;
@@ -49,19 +51,21 @@ function addWorld(){
 	var textureroad = textureLoader.load('./assets/scene/road.png', function(textureroad) {
         textureroad.wrapS = textureroad.wrapT = THREE.RepeatWrapping;
         textureroad.offset.set(0, 0);
-        textureroad.repeat.set(1500, 3);
+        textureroad.repeat.set(800, 1);
     });
 
 	var planeMaterial = new THREE.MeshBasicMaterial( { map:textureasphalt} )
 	var roadMaterial = new THREE.MeshBasicMaterial( { map:textureroad} )
 
-	scrollingPlane = new THREE.Mesh( planeGeometry, planeMaterial );
-	scrollingPlane = new THREE.Mesh( planeGeometry, roadMaterial );
+	scrollingPlane = new THREE.Mesh( planeGeometryAsphalt, planeMaterial );
+	scrollingPlane1 = new THREE.Mesh( planeGeometryRoad, roadMaterial );
 	scrollingPlane.receiveShadow = true;
 	scrollingPlane.castShadow=false;
-	//rollingGroundSphere.position.z=1;
 	scrollingPlane.rotation.z=Math.PI/2;
+	scrollingPlane1.rotation.z=Math.PI/2;
+	scrollingPlane1.position.set(0,0.1,0);
 	scene.add(scrollingPlane);
+	scene.add(scrollingPlane1);
 }
 
 function addLight(){
