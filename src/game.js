@@ -10,6 +10,7 @@ var id;
 var score_board;
 var sceneWidth=window.innerWidth;
 var sceneHeight=window.innerHeight;
+var stats;
 
 var clock = new THREE.Clock();
 var score = 0;
@@ -21,6 +22,8 @@ var speedCounter;
 function init() {
 	document.getElementsByClassName('start')[0].onclick = start;
 	document.getElementsByClassName('playAgain')[0].onclick = resumeGame;
+	stats = createStats();
+	document.body.appendChild( stats.domElement );
 	createScene(); // set up the scene
 	document.body.classList.add('fade')
 	dom.classList.add('fade')
@@ -82,6 +85,7 @@ function onWindowResize() {
 
 function render(){
     renderer.render(scene, camera); //draw
+	stats.update();
 }
 
 function update(){
@@ -93,7 +97,7 @@ function update(){
 			scrollingSpeed += 0.05;
 			speedCounter = 0;
 		}
-		scrollingPlane.position.z += scrollingSpeed;
+		//scrollingPlane.position.z += scrollingSpeed;
 		scrollingPlane1.position.z += scrollingSpeed;
         moveBuildings(scrollingSpeed);
 		moveObstacles(scrollingSpeed);
@@ -144,6 +148,17 @@ function gameOver () {
 	overlay.classList.add('summary')
 	document.getElementById('final_score_value').innerHTML = score_board.innerHTML
 	document.getElementsByClassName('score')[0].classList.add('fade')
+}
+
+function createStats() {
+	var stats = new Stats();
+	stats.setMode(0);
+
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.left = '0';
+	stats.domElement.style.top = '0';
+
+	return stats;
 }
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 	const localPrefix = isLast ? '└─' : '├─';

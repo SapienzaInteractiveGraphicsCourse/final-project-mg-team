@@ -1,4 +1,6 @@
 var car;
+var car1;
+var tree;
 var building;
 var obstacleReleaseInterval=0.4;
 var pathValues=[-4,0,4];
@@ -15,26 +17,28 @@ var newTime = new Date().getTime();
 var oldTime = new Date().getTime();
 
 async function loadCar(){
-	car = await loadModel('./assets/car/car.gltf')
-	car.type = 'car'
+	car = await loadModel('./assets/car/car.gltf');
+	car.type = 'car';
+}
+
+async function loadCar1(){
+    car1= await loadModel('./assets/car/scene.gltf');
+    car1.type= 'car1';
 }
 
 async function loadBuilding(){
-	building = await loadModel('./assets/building/building.gltf')
+	building = await loadModel('./assets/building/building.gltf');
 }
 
-/*async function loadUnknown(){ 
-	snowy_tree = await loadModel('./assets/snowy_tree/model.gltf')
-	snowy_tree.position.y=0.25;
-	snowy_tree.type = 'tree'
-	normal_tree = await loadModel('./assets/normal_tree/model.gltf')
-	normal_tree.position.y=0.25;
-	normal_tree.type = 'tree'
-}*/
+async function loadTree(){ 
+	tree = await loadModel('./assets/tree/scene.gltf');
+	tree.position.y=0;
+	tree.type = 'tree';
+}
 
 async function createObstaclePool(){
 
-	//if (!normal_tree) await loadUnknown();
+	if (!car1) await loadCar1();
 	if (!car) await loadCar();
 	var maxObsInPool=100;
 	var obstacle;
@@ -45,12 +49,11 @@ async function createObstaclePool(){
 }
 
 function createObstacle(){
-	/*if (Math.random() > 0.3){
-		return createTree();
-	} else {
+	if (Math.random() > 0.3){
 		return createCar();
-	}*/
-	return createCar();
+	} else {
+		return createCar1();
+	}
 }
 function createCar(){
 	if (car) {
@@ -63,12 +66,34 @@ function createCar(){
 	};
 }
 
+function createCar1(){
+	if (car1) {
+		let clone = car1.clone()
+		rotation =  Math.PI/2;
+		clone.scale.set(0.7, 0.7, 0.7);
+		clone.rotation.y = rotation;
+		clone.position.y=0.3;
+		return clone
+	};
+}
+
 function createBuilding(){
 	if (building) {
 		let clone = building.clone()
 		//scale = Math.random() * (1.5 - 0.5) + 0.5;
 		rotation = Math.PI/2; 
 		clone.scale.set(2, 2, 2);
+		clone.rotation.y = rotation;
+		return clone
+	};
+}
+
+function createTree(){
+	if (tree) {
+		let clone = tree.clone()
+		//scale = Math.random() * (1.5 - 0.5) + 0.5;
+		rotation = 0; 
+		clone.scale.set(0.2, 0.2, 0.2);
 		clone.rotation.y = rotation;
 		return clone
 	};
@@ -120,13 +145,6 @@ function doObstacleLogic(){
 }
 
 
-/*function createUnknown(){
-	
-	var array = [normal_tree, snowy_tree]
-	var tree = array[Math.floor(Math.random() * array.length)];
-	if (tree) {return tree.clone()};
-}*/
-
 function addBuilding(left,z){
 
 	let newBuilding = createBuilding();
@@ -137,9 +155,25 @@ function addBuilding(left,z){
 	} else {
 		newBuilding.position.x=9; //[1.52,1.57,1.62];
 		newBuilding.position.z-=z;
+		newBuilding.rotation.y=-Math.PI/2;
 	}
 	scene.add(newBuilding);
 	buildings.push(newBuilding);
+}
+
+function addTree(left,z){
+
+	let newTree = createTree();
+
+	if (left) {
+		newTree.position.x=-11;
+		newTree.position.z-=z;
+	} else {
+		newTree.position.x=11; //[1.52,1.57,1.62];
+		newTree.position.z-=z;
+	}
+	scene.add(newTree);
+	buildings.push(newTree);
 }
 
 
@@ -170,8 +204,11 @@ function addPathObstacle(){
 	if(scrollingSpeed>0.16 && scrollingSpeed<=0.21){
 		time=500;
 	}
-	if(scrollingSpeed>0.21){
+	if(scrollingSpeed>0.21 && scrollingSpeed<=0.27){
 		time=250;
+	}
+	if(scrollingSpeed>0.27){
+		time=50;
 	}
 	console.log(time);
 	console.log(scrollingSpeed);
@@ -185,11 +222,19 @@ function addPathObstacle(){
 
 async function addWorldBuilding(){
 	if (!building) await loadBuilding();
-	var numTrees=90;
+	if (!tree) await loadTree();
+    var numTrees=100;
 	var z=0;
 	for(var i=0;i<numTrees;i++){
-		addBuilding(true,z);
-		addBuilding(false,z);
-		z+=6;
+		console.log(numTrees);
+		if(i%2==0){
+		 addBuilding(true,z);
+		 addTree(false,z);
+		}
+		else{
+		 addBuilding(false,z);
+		 addTree(true,z);	
+		}
+		z+=7;
 	}
 }
