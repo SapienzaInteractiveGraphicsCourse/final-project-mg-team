@@ -3,7 +3,7 @@ final-project-mg-team/"><img src="https://www.flaticon.com/svg/static/icons/svg/
 
 Vespa traffic race is a game of the endless running genre made in ThreeJS that features a boy on the historic vespa whizzing through traffic. Help him by avoiding the incoming cars!
 <p align="center">
-<img src="/assets/menu/covervespa.png" width="40%"/>
+<img src="/assets/menu/covervespa.jpg" width="40%"/>
 </p>
 
 Instructions:
