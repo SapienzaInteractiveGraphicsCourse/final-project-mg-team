@@ -27,7 +27,7 @@ async function loadCar1(){
 }
 
 async function loadBuilding(){
-	building = await loadModel('./assets/building/building.gltf');
+	building = await loadModel('./assets/building/scene.gltf');
 }
 
 async function loadTree(){ 
@@ -82,8 +82,10 @@ function createBuilding(){
 		let clone = building.clone()
 		//scale = Math.random() * (1.5 - 0.5) + 0.5;
 		rotation = Math.PI/2; 
-		clone.scale.set(2, 2, 2);
+		//clone.scale.set(2, 2, 2);//precedent building
+		clone.scale.set(0.002, 0.002, 0.002);
 		clone.rotation.y = rotation;
+		clone.position.y = -0.6;
 		return clone
 	};
 }
