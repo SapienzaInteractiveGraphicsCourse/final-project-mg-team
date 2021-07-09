@@ -49,11 +49,11 @@ function nextIntStep(){
 			pose_counter = 0;
 		}
 	}
-	if (hero.base) {
-	  if(hero.base.position.y<=heroBaseY){
+	if (hero.biker) {
+	  if(hero.biker.position.y<=heroBaseY){
 			bounceValue=(Math.random()*0.005)+0.005;
 		}
-		hero.base.position.y+=bounceValue;
+		hero.biker.position.y+=bounceValue;
 		bounceValue-=gravity;
 	};
 }

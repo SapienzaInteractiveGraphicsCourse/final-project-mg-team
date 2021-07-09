@@ -9,3 +9,5 @@ Vespa traffic race is a game of the endless running genre made in ThreeJS that f
 Instructions:
 1. Hit start to play
 2. Avoid the obtacles using the arrow key(left and right)
+
+Click <a href="https://sapienzainteractivegraphicscourse.github.io/final-project-mg-team/">here</a> to play!

@@ -22,12 +22,12 @@ async function loadCar(){
 }
 
 async function loadCar1(){
-    car1= await loadModel('./assets/car/scene.gltf');
+    car1= await loadModel('./assets/car1/car1.gltf');
     car1.type= 'car1';
 }
 
 async function loadBuilding(){
-	building = await loadModel('./assets/building/scene.gltf');
+	building = await loadModel('./assets/building/building.gltf');
 }
 
 async function loadTree(){ 
@@ -58,8 +58,8 @@ function createObstacle(){
 function createCar(){
 	if (car) {
 		let clone = car.clone()
-		rotation = Math.PI 
-		clone.scale.set(1, 1, 1);
+		rotation = -Math.PI/2 ;
+		clone.scale.set(0.025, 0.025, 0.025);
 		clone.rotation.y = rotation;
 		clone.position.y=0.3;
 		return clone
@@ -80,12 +80,9 @@ function createCar1(){
 function createBuilding(){
 	if (building) {
 		let clone = building.clone()
-		//scale = Math.random() * (1.5 - 0.5) + 0.5;
 		rotation = Math.PI/2; 
-		//clone.scale.set(2, 2, 2);//precedent building
-		clone.scale.set(0.002, 0.002, 0.002);
+		clone.scale.set(2, 2, 2);//precedent building
 		clone.rotation.y = rotation;
-		clone.position.y = -0.6;
 		return clone
 	};
 }
@@ -225,7 +222,7 @@ function addPathObstacle(){
 async function addWorldBuilding(){
 	if (!building) await loadBuilding();
 	if (!tree) await loadTree();
-    var numTrees=100;
+    var numTrees=150;
 	var z=0;
 	for(var i=0;i<numTrees;i++){
 		console.log(numTrees);
