@@ -27,7 +27,7 @@ async function loadCar1(){
 }
 
 async function loadBuilding(){
-	building = await loadModel('./assets/building/building.gltf');
+	building = await loadModel('./assets/building/scene.gltf');
 }
 
 async function loadTree(){ 
@@ -81,8 +81,10 @@ function createBuilding(){
 	if (building) {
 		let clone = building.clone()
 		rotation = Math.PI/2; 
-		clone.scale.set(2, 2, 2);//precedent building
+		//clone.scale.set(2, 2, 2);//precedent building
+		clone.scale.set(0.002, 0.002, 0.002);
 		clone.rotation.y = rotation;
+		clone.position.y = -0.6;
 		return clone
 	};
 }
@@ -222,7 +224,7 @@ function addPathObstacle(){
 async function addWorldBuilding(){
 	if (!building) await loadBuilding();
 	if (!tree) await loadTree();
-    var numTrees=150;
+    var numTrees=4;
 	var z=0;
 	for(var i=0;i<numTrees;i++){
 		console.log(numTrees);

@@ -39,8 +39,8 @@ function createEnvironment(){
 }
 
 function addWorld(){
-	var planeGeometryAsphalt = new THREE.PlaneGeometry(10000,40);
-	var planeGeometryRoad = new THREE.PlaneGeometry(10000,12);
+	var planeGeometryAsphalt = new THREE.PlaneGeometry(70,40);
+	var planeGeometryRoad = new THREE.PlaneGeometry(70,12);
     
 	var textureasphalt = textureLoader.load('./assets/scene/asphalt.png', function(textureasphalt) {
         textureasphalt.wrapS = textureasphalt.wrapT = THREE.RepeatWrapping;
@@ -51,7 +51,7 @@ function addWorld(){
 	var textureroad = textureLoader.load('./assets/scene/road.png', function(textureroad) {
         textureroad.wrapS = textureroad.wrapT = THREE.RepeatWrapping;
         textureroad.offset.set(0, 0);
-        textureroad.repeat.set(800, 1);
+        textureroad.repeat.set(10, 1);
     });
 
 	var planeMaterial = new THREE.MeshBasicMaterial( { map:textureasphalt} )

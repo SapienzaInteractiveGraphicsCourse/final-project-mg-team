@@ -104,6 +104,9 @@ function update(){
 		scrollingPlane.rotation.x=-Math.PI/2;
 		scrollingPlane1.rotation.x=-Math.PI/2;
 		nextIntStep();
+		if(scrollingPlane1.position.z>=10){
+		 scrollingPlane1.position.z=-10;
+		}
 		obstacleCounter += 1;
 		speedCounter += 1;
 		if(obstacleCounter >= obstacleInterval){
@@ -134,7 +137,11 @@ function resumeGame() {
 function moveBuildings(speed) {
     for (var i = 0; i < buildings.length; i++) {
         buildings[i].position.z += speed;
+		if(buildings[i].position.z >= 7){
+		 buildings[i].position.z = -25;
+		} 
     }
+	
 }
 
 function moveObstacles(speed) {
