@@ -48,7 +48,7 @@ function setVars() {
 async function createScene(){
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0xffffff, 0.03); //fog
-    camera = new THREE.PerspectiveCamera( 75, sceneWidth / sceneHeight, 0.1, 1000); //prspective camera
+    camera = new THREE.PerspectiveCamera( 75, sceneWidth / sceneHeight, 0.1, 1000); //perspective camera
 	camera.position.set(0, 3.5, 6.5);
 
     score_board = document.getElementsByClassName('value')[0];
@@ -123,8 +123,6 @@ function update(){
 		gameOver();
 	}
 	
-    //doExplosionLogic();
-	//updateParticles();
     render();
 }
 

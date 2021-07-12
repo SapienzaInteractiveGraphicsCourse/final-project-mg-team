@@ -130,7 +130,7 @@ function doObstacleLogic(){
 			if (hero) {
 				if(hero.biker.position.distanceTo(obstaclePos)<=1){
 					hero.hasCollided=true;
-					//explode();
+					
 				}
 			}
 		}
@@ -154,7 +154,7 @@ function addBuilding(left,z){
 		newBuilding.position.x=-9;
 		newBuilding.position.z-=z;
 	} else {
-		newBuilding.position.x=9; //[1.52,1.57,1.62];
+		newBuilding.position.x=9; 
 		newBuilding.position.z-=z;
 		newBuilding.rotation.y=-Math.PI/2;
 	}
@@ -170,7 +170,7 @@ function addTree(left,z){
 		newTree.position.x=-11;
 		newTree.position.z-=z;
 	} else {
-		newTree.position.x=11; //[1.52,1.57,1.62];
+		newTree.position.x=11; 
 		newTree.position.z-=z;
 	}
 	scene.add(newTree);
